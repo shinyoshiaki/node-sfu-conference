@@ -1,12 +1,13 @@
+import { Dispatch } from "redux";
 import { setAudio, setCam } from "../redux/local";
 
-export async function startup() {
+export async function startup(dispatch: Dispatch) {
   const media = await navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true,
   });
   const cam = media.getVideoTracks()[0];
-  setCam({ cam });
+  dispatch(setCam({ cam }));
   const audio = media.getAudioTracks()[0];
-  setAudio({ audio });
+  dispatch(setAudio({ audio }));
 }
