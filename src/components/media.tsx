@@ -1,17 +1,20 @@
 import styled from "@emotion/styled";
 import React, { CSSProperties, FC, ReactNode, useEffect, useRef } from "react";
+import { VADetector } from "./va-detector";
 
 export type MediaProps = {
   controls?: ReactNode;
   className?: string;
   video?: MediaStreamTrack;
   audio?: MediaStreamTrack;
+  audioPlay?: boolean;
 };
 
 export const Media: FC<MediaProps> = ({
   controls,
   className,
   audio,
+  audioPlay,
   video,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -31,7 +34,7 @@ export const Media: FC<MediaProps> = ({
 
   useEffect(() => {
     if (audioRef.current) {
-      if (audio) {
+      if (audio && audioPlay) {
         const stream = new MediaStream();
         stream.addTrack(audio);
         audioRef.current.srcObject = stream;
@@ -39,7 +42,7 @@ export const Media: FC<MediaProps> = ({
         audioRef.current.srcObject = null;
       }
     }
-  }, [audio]);
+  }, [audio, audioPlay]);
 
   return (
     <Container className={className}>
@@ -53,6 +56,9 @@ export const Media: FC<MediaProps> = ({
         />
         <audio autoPlay playsInline ref={audioRef} />
       </div>
+      <Effect>
+        <VADetector track={audio} />
+      </Effect>
     </Container>
   );
 };
@@ -72,4 +78,12 @@ const Controls = styled.div`
   z-index: 10;
   right: 0;
   padding: 5px;
+`;
+
+const Effect = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 `;

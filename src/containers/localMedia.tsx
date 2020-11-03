@@ -12,7 +12,9 @@ import {
   faMicrophoneSlash,
 } from "@fortawesome/free-solid-svg-icons";
 
-export const LocalMedia: FC = () => {
+export type LocalMediaProps = { className?: string };
+
+export const LocalMedia: FC<LocalMediaProps> = ({ className }) => {
   const dispatch = useDispatch();
 
   const cam = useSelector(({ local }) => local.camTrack);
@@ -38,8 +40,10 @@ export const LocalMedia: FC = () => {
 
   return (
     <StyledMedia
+      className={className}
       video={cam}
       audio={audio}
+      audioPlay={false}
       controls={
         <div style={{ display: "flex" }}>
           <StyledIconSwitch
