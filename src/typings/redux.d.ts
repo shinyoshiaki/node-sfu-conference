@@ -1,5 +1,5 @@
 import "react-redux";
-import { ReduxState } from "../redux/createStore";
+import { ReduxState } from "../redux/redux";
 
 // ______________________________________________________
 //

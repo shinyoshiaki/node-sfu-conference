@@ -9,11 +9,14 @@
     "dev": "webpack serve --mode development",
     "format": "prettier --write src/**/*.{ts,tsx,js}",
     "lint": "eslint --fix src/**/*.{ts,tsx,js}",
-    "type": "tsc  --noEmit"
+    "type": "tsc  --noEmit",
+    "storybook": "start-storybook -p 6006 --no-dll",
+    "build-storybook": "build-storybook --no-dll"
   },
   "dependencies": {
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
+    "@reduxjs/toolkit": "^1.4.0",
     "antd": "^4.8.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -22,6 +25,11 @@
     "redux-logger": "^3.0.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
+    "@storybook/react": "^6.0.28",
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
     "@types/react-redux": "^7.1.10",
@@ -29,6 +37,7 @@
     "@types/redux-logger": "^3.0.8",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "babel-loader": "^8.1.0",
     "comlink-loader": "^2.0.0",
     "css-loader": "^5.0.0",
     "depcheck": "^1.2.0",
@@ -38,8 +47,9 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^4.5.0",
+    "html-webpack-plugin": "5.0.0-alpha.9",
     "prettier": "^2.1.2",
+    "react-is": "^17.0.1",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.7",
     "tslib": "^2.0.3",
