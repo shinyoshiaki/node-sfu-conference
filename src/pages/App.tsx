@@ -1,19 +1,17 @@
 import styled from "@emotion/styled";
-import React, { FC, useState, useRef, useEffect } from "react";
+import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { LocalMedia } from "../containers/localMedia";
-import { startup } from "../domain/startup";
+import { useStartup } from "../domain/startup";
 
 export const App: FC = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    startup(dispatch);
-  }, [dispatch]);
+  const lock = useStartup(dispatch);
 
   return (
     <Container>
-      <StyledLocalMedia />
+      <WrapLocalMedia>{lock ? <p>loading</p> : <LocalMedia />}</WrapLocalMedia>
     </Container>
   );
 };
@@ -23,7 +21,7 @@ const Container = styled.div`
   height: 98vh;
 `;
 
-const StyledLocalMedia = styled(LocalMedia)`
+const WrapLocalMedia = styled.div`
   position: absolute;
   left: 0;
   bottom: 0;
