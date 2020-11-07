@@ -1472,6 +1472,14 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
+"@shinyoshiaki/node-sfu-client@^0.0.6":
+  version "0.0.6"
+  resolved "https://npm.pkg.github.com/download/@shinyoshiaki/node-sfu-client/0.0.6/a55d9849f587799a8b33ea3902bfcb9a594b1033cf2bf47a8609b1995b7a692f#d867aa512e9743e11e0a28d803a4939dd2912bd7"
+  integrity sha512-6tTxpFX9RY0QKUOWFvXy3kH5F7dDbXGXOIwT8QGNBV9V6H4MONUvN7jwjDD6peFIOIF+5Wc8M+aHdL9Dv4n63Q==
+  dependencies:
+    axios "^0.21.0"
+    rx.mini "^1.0.0"
+
 "@storybook/addon-actions@6.0.28", "@storybook/addon-actions@^6.0.28":
   version "6.0.28"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.0.28.tgz#86c0353b597c2a41f6ac7efa7c0d5aeed6a456b2"
@@ -2123,6 +2131,13 @@
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
   integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
+
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+  integrity sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=
+  dependencies:
+    axios "*"
 
 "@types/braces@*":
   version "3.0.0"
@@ -3154,6 +3169,13 @@ autoprefixer@^9.7.2:
     num2fraction "^1.2.2"
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
+
+axios@*, axios@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.0.tgz#26df088803a2350dff2c27f96fef99fe49442aca"
+  integrity sha512-fmkJBknJKoZwem3/IKSSLpkdNXZeBu5Q7GA/aRsr2btgrptmSCxi2oFjZHqGdK9DoTil9PIHlPIZw2EcRJXRvw==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 babel-code-frame@^6.22.0:
   version "6.26.0"
@@ -5871,7 +5893,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
@@ -10339,6 +10361,11 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   integrity sha1-6Eg5bwV9Ij8kOGkkYY4laUFh7Ec=
   dependencies:
     aproba "^1.1.1"
+
+rx.mini@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rx.mini/-/rx.mini-1.0.0.tgz#4a689140571ac436962737a00e0e2155cbd0ec0f"
+  integrity sha512-9UCpq0p1SGSeBd18S5axVRnAupLc3lRBoXzX/u8mVOzpu1g1O8edzlF5L8kLfSnPQYUAeDsNGjrEW502AygsQQ==
 
 rxjs@^6.5.3, rxjs@^6.6.0:
   version "6.6.3"

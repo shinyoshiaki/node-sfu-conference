@@ -20,13 +20,16 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
     "@reduxjs/toolkit": "^1.4.0",
+    "@shinyoshiaki/node-sfu-client": "^0.0.6",
     "antd": "^4.8.0",
+    "axios": "^0.21.0",
     "hark": "^1.2.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "rx.mini": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -34,6 +37,7 @@
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
     "@storybook/react": "^6.0.28",
+    "@types/axios": "^0.14.0",
     "@types/hark": "^1.2.1",
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
