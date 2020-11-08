@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { GenerateSW } = require("workbox-webpack-plugin");
+const webpack = require("webpack");
 
 const dist = __dirname + "/build";
 
@@ -80,6 +81,9 @@ module.exports = {
       swDest: dist + "/sw.js",
       clientsClaim: true,
       skipWaiting: true,
+    }),
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),
   ],
   devServer: {

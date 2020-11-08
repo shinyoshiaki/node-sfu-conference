@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rm -rf build && NODE_ENV=production webpack --mode production",
     "depcheck": "depcheck",
-    "dev": "webpack serve --mode development",
+    "dev": "NODE_ENV=dev webpack serve --mode development",
     "format": "prettier --write src/**/*.{ts,tsx,js}",
     "lint": "eslint --fix src/**/*.{ts,tsx,js}",
     "type": "tsc  --noEmit",
@@ -20,7 +20,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
     "@reduxjs/toolkit": "^1.4.0",
-    "@shinyoshiaki/node-sfu-client": "^0.0.6",
+    "@shinyoshiaki/node-sfu-client": "^0.0.8",
     "antd": "^4.8.0",
     "axios": "^0.21.0",
     "hark": "^1.2.3",

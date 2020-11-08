@@ -1,13 +1,15 @@
 import styled from "@emotion/styled";
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { LocalMedia } from "../containers/localMedia";
+import { Context } from "../context/context";
 import { useStartup } from "../domain/startup";
 
 export const App: FC = () => {
   const dispatch = useDispatch();
+  const context = useContext(Context);
 
-  const lock = useStartup(dispatch);
+  const lock = useStartup(dispatch, context);
 
   return (
     <Container>
