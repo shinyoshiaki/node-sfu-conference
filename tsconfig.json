@@ -5,6 +5,7 @@
     "module": "ES2015",
     "jsx": "react",
     "strict": true,
+    "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
     "lib": ["esnext", "dom"]
