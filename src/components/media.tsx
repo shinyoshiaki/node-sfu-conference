@@ -48,12 +48,7 @@ export const Media: FC<MediaProps> = ({
     <Container className={className}>
       <Controls>{controls}</Controls>
       <div>
-        <video
-          autoPlay
-          playsInline
-          ref={videoRef}
-          style={{ height: "-webkit-fill-available", width: "100%" }}
-        />
+        <video autoPlay playsInline ref={videoRef} style={{ width: "100%" }} />
         <audio autoPlay playsInline ref={audioRef} />
       </div>
       <Effect>

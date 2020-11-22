@@ -1,5 +1,6 @@
 import { ClientSDK } from "@shinyoshiaki/node-sfu-client";
 import { Dispatch } from "redux";
+import { addMedia, removeMedia } from "../redux/remote";
 
 export class RTCContext extends ClientSDK {
   listen(dispatch: Dispatch) {
@@ -8,6 +9,12 @@ export class RTCContext extends ClientSDK {
         this.subscribe([info]);
       }
     });
-    this.onTrack.subscribe((stream, info) => {});
+    this.onTrack.subscribe((stream, info) => {
+      dispatch(addMedia({ stream, info }));
+      stream.onremovetrack = () => {
+        console.warn("onremove", info);
+        dispatch(removeMedia({ info }));
+      };
+    });
   }
 }

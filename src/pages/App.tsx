@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { FC, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { LocalMedia } from "../containers/localMedia";
+import { RemoteMediaList } from "../containers/remoteMediaList";
 import { Context } from "../context/context";
 import { useStartup } from "../domain/startup";
 
@@ -14,6 +15,7 @@ export const App: FC = () => {
   return (
     <Container>
       <WrapLocalMedia>{lock ? <p>loading</p> : <LocalMedia />}</WrapLocalMedia>
+      <RemoteMediaList />
     </Container>
   );
 };

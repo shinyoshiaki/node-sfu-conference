@@ -9,8 +9,16 @@ export function useStartup(dispatch: Dispatch, { rtc }: ContextProps) {
 
   useAsyncEffect(async () => {
     const { cam, audio } = await gUM();
-    await join();
+    const rtc = await join();
+    rtc.listen(dispatch);
+
     await publish([cam, audio]);
+
+    const infos = (await rtc.getTracks()).filter(
+      (info) => info.publisherId !== rtc.peerId
+    );
+    await rtc.subscribe(infos);
+
     setLock(false);
   }, [dispatch]);
 
@@ -38,7 +46,7 @@ export function useStartup(dispatch: Dispatch, { rtc }: ContextProps) {
     }
 
     await rtc.join();
-    rtc.listen(dispatch);
+    return rtc;
   }
 
   async function publish([video, audio]: MediaStreamTrack[]) {
