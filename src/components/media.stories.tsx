@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { Media, MediaProps } from "./media";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

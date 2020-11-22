@@ -1,4 +1,4 @@
-import React, { createContext, FC } from "react";
+import { createContext, FC } from "react";
 import { RTCContext } from "./rtc";
 
 export type ContextProps = { rtc: RTCContext };

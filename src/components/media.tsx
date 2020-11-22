@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { CSSProperties, FC, ReactNode, useEffect, useRef } from "react";
+import { CSSProperties, FC, ReactNode, useEffect, useRef } from "react";
 import { VADetector } from "./va-detector";
 
 export type MediaProps = {

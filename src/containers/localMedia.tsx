@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { FC } from "react";
+import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IconSwitch } from "../components/iconSwitch";
 import { Media } from "../components/media";

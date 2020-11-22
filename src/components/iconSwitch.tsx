@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 
 export type IconSwitchProps = {
   initial: boolean;
