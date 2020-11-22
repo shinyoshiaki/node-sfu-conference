@@ -68,8 +68,8 @@ const StyledMedia = styled(Media)`
   width: 250px;
   height: 190px;
   @media (max-width: 420px) {
-    width: calc(250px - 40px);
-    height: calc(190px - 40px);
+    width: 100%;
+    height: auto;
   }
 `;
 

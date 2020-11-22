@@ -65,7 +65,10 @@ export const RemoteMedia: FC<{ user: User }> = ({ user }) => {
 const StyledMedia = styled(Media)`
   width: 250px;
   height: 190px;
-  margin: 5px;
+  @media (max-width: 420px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const StyledIconSwitch = styled(IconSwitch)`

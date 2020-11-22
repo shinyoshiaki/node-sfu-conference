@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Divider } from "antd";
 import { FC, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { LocalMedia } from "../containers/localMedia";
@@ -14,8 +15,16 @@ export const App: FC = () => {
 
   return (
     <Container>
-      <WrapLocalMedia>{lock ? <p>loading</p> : <LocalMedia />}</WrapLocalMedia>
-      <RemoteMediaList />
+      <Users>
+        <Divider orientation="left" plain>
+          Me
+        </Divider>
+        <div>{lock ? <p>loading</p> : <LocalMedia />}</div>
+        <Divider orientation="left" plain>
+          Participants
+        </Divider>
+        <StyledRemoteMediaList />
+      </Users>
     </Container>
   );
 };
@@ -25,8 +34,17 @@ const Container = styled.div`
   height: 98vh;
 `;
 
-const WrapLocalMedia = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 0;
+const Users = styled.div`
+  padding: 10px;
+  height: 100%;
+  width: 250px;
+  @media (max-width: 420px) {
+    width: 100%;
+  }
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledRemoteMediaList = styled(RemoteMediaList)`
+  flex-grow: 1;
 `;

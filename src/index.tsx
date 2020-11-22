@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import createStore from "./redux/redux";
 import { ContextProvider } from "./context/context";
 import { RTCContext } from "./context/rtc";
+import "antd/dist/antd.css";
 
 const endpointURL = (() => {
   //@ts-ignore
