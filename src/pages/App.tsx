@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { FC, useContext } from "react";
+import { FC, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { LocalMedia } from "../containers/localMedia";
 import { Context } from "../context/context";
