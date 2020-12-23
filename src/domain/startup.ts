@@ -14,7 +14,7 @@ export function useStartup(dispatch: Dispatch, { rtc }: ContextProps) {
 
     await publish([cam, audio]);
 
-    const infos = (await rtc.getTracks()).filter(
+    const infos = (await rtc.getMedias()).filter(
       (info) => info.publisherId !== rtc.peerId
     );
     await rtc.subscribe(infos);
@@ -39,21 +39,19 @@ export function useStartup(dispatch: Dispatch, { rtc }: ContextProps) {
     const params = new URLSearchParams(window.location.hash.split("#")[1]);
 
     if (!params.has("room")) {
-      await rtc.create();
+      await rtc.apiCreate();
       window.location.hash = `?room=${rtc.roomName}`;
     } else {
       rtc.roomName = params.get("room")!;
     }
 
-    await rtc.join();
+    await rtc.apiJoin();
     return rtc;
   }
 
   async function publish([video, audio]: MediaStreamTrack[]) {
-    await rtc.publish([
-      { track: video, simulcast: true },
-      { track: audio, simulcast: false },
-    ]);
+    await rtc.publish({ track: audio });
+    await rtc.publish({ track: video, simulcast: true });
   }
 
   return lock;

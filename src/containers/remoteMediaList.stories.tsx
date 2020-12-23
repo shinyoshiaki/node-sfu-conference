@@ -17,7 +17,12 @@ navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
     store.dispatch(
       addMedia({
         stream,
-        info: { mediaId: `${i}`, kind: "video", publisherId: `${i}` },
+        info: {
+          mediaId: `${i}`,
+          kind: "video",
+          publisherId: `${i}`,
+          simulcast: false,
+        },
       })
     );
   });
