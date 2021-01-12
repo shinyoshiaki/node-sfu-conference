@@ -4,6 +4,7 @@ import { MediaInfo } from "@shinyoshiaki/node-sfu-client";
 export type RemoteState = {
   peer?: RTCPeerConnection;
   users: { [peerId: string]: User };
+  pinnedMedia?: MediaInfo;
 };
 
 export type User = {
@@ -65,6 +66,12 @@ const module = createSlice({
     ) => {
       state.users[info.publisherId].medias[info.mediaId].play = false;
     },
+    setPinnedMedia: (
+      state,
+      { payload }: PayloadAction<MediaInfo | undefined>
+    ) => {
+      state.pinnedMedia = payload;
+    },
   },
 });
 
@@ -75,4 +82,5 @@ export const {
   enableMedia,
   disableMedia,
   removeMedia,
+  setPinnedMedia,
 } = module.actions;

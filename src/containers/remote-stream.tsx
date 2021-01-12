@@ -1,27 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FunctionComponent } from "react";
 import { css } from "@emotion/css";
 import { rightMenuWidth } from "../util/style";
-import Video from "./video";
-import StreamController from "./stream-controller";
-import { Icon, IconButton } from "./icon";
-import VADetector from "./va-detector";
+import Video from "../components/video";
+import StreamController from "../components/stream-controller";
+import { Icon, IconButton } from "../components/icon";
+import VADetector from "../components/va-detector";
 import { globalColors } from "../util/global-style";
+import { useManager } from "../context/context";
+import { MediaInfo } from "@shinyoshiaki/node-sfu-client";
 
-interface Props {
+type Props = {
   stream: MediaStream;
+  info: MediaInfo;
   isPinned: boolean;
   displayName: string;
-  onClickSetPinned: () => void;
-}
+  onClickSetPinned: (info: MediaInfo) => void;
+};
+
 const RemoteStreamLayout: FunctionComponent<Props> = ({
   stream,
   isPinned,
   onClickSetPinned,
   displayName,
+  info,
 }: Props) => {
   const [isInfoShown, setInfoShown] = useState(false);
   const kinds = [...new Set(stream.getTracks().map((track) => track.kind))];
+  const manager = useManager();
+
+  useEffect(() => {
+    manager.changeQuality(info, "low");
+  }, []);
 
   return (
     <>
@@ -33,7 +43,7 @@ const RemoteStreamLayout: FunctionComponent<Props> = ({
               name={isPinned ? "cancel_presentation" : "present_to_all"}
               showEdge={true}
               title="Pin this video"
-              onClick={onClickSetPinned}
+              onClick={() => onClickSetPinned(info)}
             />
           ) : null}
           <IconButton
