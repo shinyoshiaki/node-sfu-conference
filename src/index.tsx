@@ -37,7 +37,7 @@ document.getElementById("root")!.className = css({
 
 ReactDOM.render(
   <Provider store={store}>
-    <ContextProvider value={{ rtc }}>
+    <ContextProvider rtc={rtc}>
       <App />
     </ContextProvider>
   </Provider>,

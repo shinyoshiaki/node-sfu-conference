@@ -21,7 +21,6 @@ const RemoteStreamLayout: FunctionComponent<Props> = ({
   displayName,
 }: Props) => {
   const [isInfoShown, setInfoShown] = useState(false);
-
   const kinds = [...new Set(stream.getTracks().map((track) => track.kind))];
 
   return (

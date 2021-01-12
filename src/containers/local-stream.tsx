@@ -12,15 +12,15 @@ import {
   getUserAudioTrack,
   getUserVideoTrack,
 } from "../domain/media";
-import { Context } from "../context/context";
 import { setAudio, setAudioInfo, setCam, setCamInfo } from "../redux/local";
+import { useManager } from "../context/context";
 
 const LocalStream: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [isMinimize, setMinimize] = useState(false);
 
   const local = useSelector(({ local }) => local);
-  const { rtc } = useContext(Context);
+  const rtc = useManager();
 
   const stream = new MediaStream();
   if (local.camTrack) stream.addTrack(local.camTrack);

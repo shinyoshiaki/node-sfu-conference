@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Dispatch } from "redux";
+import { RTCContext } from "../context/rtc";
 import { setAudio, setAudioInfo, setCam, setCamInfo } from "../redux/local";
 import { useAsyncEffect } from "../util/hooks";
-import { ContextProps } from "../context/context";
 
-export function useStartup(dispatch: Dispatch, { rtc }: ContextProps) {
+export function useStartup(dispatch: Dispatch, rtc: RTCContext) {
   const [lock, setLock] = useState(true);
 
   useAsyncEffect(async () => {

@@ -1,11 +1,10 @@
-import { createContext, FC } from "react";
+import { createContext, FC, useContext } from "react";
 import { RTCContext } from "./rtc";
 
-export type ContextProps = { rtc: RTCContext };
+const Context = createContext<RTCContext>({} as any);
 
-export const Context = createContext<ContextProps>({} as any);
+export const ContextProvider: FC<{ rtc: RTCContext }> = ({ children, rtc }) => (
+  <Context.Provider value={rtc}>{children}</Context.Provider>
+);
 
-export const ContextProvider: FC<{ value: ContextProps }> = ({
-  children,
-  value,
-}) => <Context.Provider value={value}>{children}</Context.Provider>;
+export const useManager = () => useContext(Context);
