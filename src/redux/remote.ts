@@ -48,6 +48,10 @@ const module = createSlice({
       const medias = user.medias;
       delete medias[info.mediaId];
       user.medias = medias;
+
+      if (Object.keys(user.medias).length === 0) {
+        delete state.users[info.publisherId];
+      }
     },
     enableMedia: (
       state,
