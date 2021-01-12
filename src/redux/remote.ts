@@ -7,6 +7,7 @@ export type RemoteState = {
 };
 
 export type User = {
+  peerId: string;
   medias: {
     [mediaId: string]: { info: MediaInfo; stream: MediaStream; play: boolean };
   };
@@ -25,7 +26,10 @@ const module = createSlice({
       }: PayloadAction<{ stream: MediaStream; info: MediaInfo }>
     ) => {
       if (!state.users[info.publisherId])
-        state.users[info.publisherId] = { medias: {} };
+        state.users[info.publisherId] = {
+          medias: {},
+          peerId: info.publisherId,
+        };
 
       const play = true;
 
@@ -39,9 +43,11 @@ const module = createSlice({
       state,
       { payload: { info } }: PayloadAction<{ info: MediaInfo }>
     ) => {
-      const medias = state.users[info.publisherId].medias;
+      const user = state.users[info.publisherId];
+      if (!user) return;
+      const medias = user.medias;
       delete medias[info.mediaId];
-      state.users[info.publisherId].medias = medias;
+      user.medias = medias;
     },
     enableMedia: (
       state,

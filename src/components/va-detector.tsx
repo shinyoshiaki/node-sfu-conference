@@ -1,44 +1,41 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
+import { FunctionComponent } from "react";
+import { css } from "@emotion/css";
 import hark from "hark";
-import styled from "@emotion/styled";
+import { globalColors } from "../util/global-style";
 
-export type VADetectorProps = {
-  track?: MediaStreamTrack;
-};
-
-export const VADetector: React.FC<VADetectorProps> = ({ track }) => {
+interface Props {
+  stream: MediaStream;
+}
+const VADetector: FunctionComponent<Props> = ({ stream }) => {
   const [decibel, setDecibel] = useState(-Infinity);
   useEffect(() => {
-    if (!track) return;
-
-    const stream = new MediaStream();
-    stream.addTrack(track);
-
-    console.log({ track });
+    // if audio source is changing
+    if (stream.getAudioTracks().length === 0) return;
 
     const harker = hark(stream, { threshold: -75 });
     // db: -100 ~ 0 (silent ~ loud)
-    harker.on("volume_change", (db) => {
-      db !== -Infinity && setDecibel(db);
-    });
+    harker.on("volume_change", (db) => db !== -Infinity && setDecibel(db));
 
     return () => harker.stop();
-  }, [track]);
+  }, [stream]);
 
-  return <Styled style={decibelToStyle(decibel)} />;
+  return <div style={decibelToStyle(decibel)} className={wrapperStyle} />;
 };
+
+export default memo(VADetector);
 
 const decibelToStyle = (db: number) => {
   if (db === -Infinity) return {};
 
   const audioLevel = db + 100; // 0 ~ 100
   return {
-    height: audioLevel * 0.15, // 0 ~ 15px
+    height: audioLevel * 0.1, // 0 ~ 10px
     opacity: audioLevel * 0.01, // 0 ~ 1
   };
 };
 
-const Styled = styled.div`
-  background-color: #005ece;
-`;
+const wrapperStyle = css({
+  backgroundColor: globalColors.blue,
+  willChange: ["height", "opacity"],
+});

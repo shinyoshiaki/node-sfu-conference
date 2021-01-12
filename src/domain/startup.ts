@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Dispatch } from "redux";
-import { setAudio, setCam } from "../redux/local";
+import { setAudio, setAudioInfo, setCam, setCamInfo } from "../redux/local";
 import { useAsyncEffect } from "../util/hooks";
 import { ContextProps } from "../context/context";
 
@@ -50,8 +50,10 @@ export function useStartup(dispatch: Dispatch, { rtc }: ContextProps) {
   }
 
   async function publish([video, audio]: MediaStreamTrack[]) {
-    await rtc.publish({ track: audio });
-    await rtc.publish({ track: video, simulcast: true });
+    const audioInfo = await rtc.publish({ track: audio });
+    dispatch(setAudioInfo({ info: audioInfo }));
+    const camInfo = await rtc.publish({ track: video, simulcast: true });
+    dispatch(setCamInfo({ info: camInfo }));
   }
 
   return lock;

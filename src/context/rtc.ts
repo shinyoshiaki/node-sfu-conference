@@ -19,10 +19,9 @@ export class RTCContext extends ClientSDK {
     });
     this.events.onTrack.subscribe((stream, info) => {
       dispatch(addMedia({ stream, info }));
-      stream.onremovetrack = () => {
-        console.warn("onremove", info);
-        dispatch(removeMedia({ info }));
-      };
+    });
+    this.events.onUnPublish.subscribe((info) => {
+      dispatch(removeMedia({ info }));
     });
   }
 

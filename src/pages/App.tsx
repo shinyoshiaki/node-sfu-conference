@@ -1,8 +1,13 @@
 import styled from "@emotion/styled";
 import { Divider } from "antd";
+import Layout from "antd/lib/layout/layout";
 import { FC, useContext } from "react";
 import { useDispatch } from "react-redux";
+import LeftBottom from "../components/left-bottom";
+import RightMenu from "../components/right-menu";
+import LocalStream from "../containers/local-stream";
 import { LocalMedia } from "../containers/localMedia";
+import RemoteStreams from "../containers/remote-streams";
 import { RemoteMediaList } from "../containers/remoteMediaList";
 import { Context } from "../context/context";
 import { useStartup } from "../domain/startup";
@@ -14,18 +19,14 @@ export const App: FC = () => {
   const lock = useStartup(dispatch, context);
 
   return (
-    <Container>
-      <Users>
-        <Divider orientation="left" plain>
-          Me
-        </Divider>
-        <div>{lock ? <p>loading</p> : <LocalMedia />}</div>
-        <Divider orientation="left" plain>
-          Participants
-        </Divider>
-        <StyledRemoteMediaList />
-      </Users>
-    </Container>
+    <Layout>
+      <LeftBottom>
+        <LocalStream />
+      </LeftBottom>
+      <RightMenu openers={[]}>
+        <RemoteStreams />
+      </RightMenu>
+    </Layout>
   );
 };
 

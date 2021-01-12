@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@emotion/core": "^11.0.0",
+    "@emotion/css": "^11.1.3",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "@emotion/styled-base": "^11.0.0",
@@ -22,7 +23,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@reduxjs/toolkit": "^1.5.0",
-    "@shinyoshiaki/node-sfu-client": "^0.0.16",
+    "@shinyoshiaki/node-sfu-client": "^0.0.18",
     "antd": "^4.9.4",
     "axios": "^0.21.1",
     "hark": "^1.2.3",

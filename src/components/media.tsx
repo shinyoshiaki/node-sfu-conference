@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { CSSProperties, FC, ReactNode, useEffect, useRef } from "react";
-import { VADetector } from "./va-detector";
+import { FC, ReactNode, useEffect, useMemo, useRef } from "react";
+import VADetector from "./va-detector";
 
 export type MediaProps = {
   controls?: ReactNode;
@@ -44,6 +44,12 @@ export const Media: FC<MediaProps> = ({
     }
   }, [audio, audioPlay]);
 
+  const stream = useMemo(() => {
+    const stream = new MediaStream();
+    if (audio) stream.addTrack(audio);
+    return stream;
+  }, [audio]);
+
   return (
     <Container className={className}>
       <Controls>{controls}</Controls>
@@ -52,7 +58,7 @@ export const Media: FC<MediaProps> = ({
         <audio autoPlay playsInline ref={audioRef} />
       </div>
       <Effect>
-        <VADetector track={audio} />
+        <VADetector stream={stream} />
       </Effect>
     </Container>
   );
